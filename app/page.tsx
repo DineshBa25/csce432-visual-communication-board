@@ -40,7 +40,6 @@ export default function Home() {
     const handleSubmit = () => {
         // Handle submission here, e.g., send selected images to a server
         console.log("Selected images:", selectedImages);
-        //loop through selected images
 
         let sentence = "I am " + selectedImages.map(image => image.label.toLowerCase()).join(' and ') + "."
         if (selectedImages.at(0)?.id === 8 && selectedImages.at(1)?.id === 12 && selectedImages.at(2)?.id === 5) {
@@ -52,7 +51,7 @@ export default function Home() {
         else if (selectedImages.at(0)?.id === 8 && selectedImages.at(1)?.id === 11 && selectedImages.at(2)?.id === 9) {
             sentence = "Can I eat or play?";
         }
-        else if (selectedImages.at(0)?.id === 6) {
+        else if (selectedImages.at(0)?.id === 6 && selectedImages.length === 1) {
             sentence = "I love you.";
         }
 
@@ -72,6 +71,10 @@ export default function Home() {
     };
 
     const handleClear = () => {
+        if ('speechSynthesis' in window) {
+            const speech = new SpeechSynthesisUtterance("You cleared the selected images.");
+            window.speechSynthesis.speak(speech);
+        }
         setSelectedImages([]);
     };
 
