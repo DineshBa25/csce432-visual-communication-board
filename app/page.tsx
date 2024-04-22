@@ -52,6 +52,9 @@ export default function Home() {
         else if (selectedImages.at(0)?.id === 8 && selectedImages.at(1)?.id === 11 && selectedImages.at(2)?.id === 9) {
             sentence = "Can I eat or play?";
         }
+        else if (selectedImages.at(0)?.id === 6) {
+            sentence = "I love you.";
+        }
 
         const newMessage = {
             sender: activeSender,
